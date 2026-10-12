@@ -20,7 +20,7 @@ public class HotbarSwapClientMod implements ClientModInitializer {
         // Registrazione del KeyMapping personalizzabile (Tasto F predefinito con costante InputConstants)
         swapKeyMapping = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.hotbarswap.swap_key",
-                InputConstants.Type.KEYBOARD,
+                InputConstants.Type.KEYSYM,
                 InputConstants.KEY_F,
                 KeyMapping.Category.INVENTORY
         ));
@@ -28,7 +28,7 @@ public class HotbarSwapClientMod implements ClientModInitializer {
         // Gestione della pressione durante il ciclo di gioco
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (swapKeyMapping.consumeClick()) {
-                if (client.player != null && client.gui.screen() == null) {
+                if (client.player != null && client.screen == null) {
                     int selectedSlot = client.player.getInventory().getSelectedSlot();
                     // Invia il pacchetto autoritativo al server
                     ClientPlayNetworking.send(new SwapHotbarPayload(selectedSlot));
