@@ -71,7 +71,7 @@ public class HotbarSwapManager {
         player.level().playSound(
                 null,
                 player.getX(), player.getY(), player.getZ(),
-                SoundEvents.UI_BUTTON_CLICK,
+                SoundEvents.UI_BUTTON_CLICK.value(),
                 SoundSource.PLAYERS,
                 0.35F,
                 1.4F + (steps[hotbarSlot] * 0.15F)
