@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "hotbarswap",
+  "version": "${version}",
+  "name": "Hotbar Swap",
+  "description": "Scambio rapido e istantaneo degli oggetti della hotbar con le colonne dell'inventario.",
+  "authors": [
+    "sky71"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/hotbarswap",
+    "sources": "https://github.com/skyclow00-droid/hotbar-swap",
+    "issues": "https://github.com/skyclow00-droid/hotbar-swap/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/hotbarswap/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.hotbarswap.HotbarSwapMod"
+    ],
+    "client": [
+      "com.hotbarswap.client.HotbarSwapClientMod"
+    ]
+  },
+  "mixins": [
+    "hotbarswap.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": ">=26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
