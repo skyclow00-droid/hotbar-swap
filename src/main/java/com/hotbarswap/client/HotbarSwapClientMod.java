@@ -20,7 +20,7 @@ public class HotbarSwapClientMod implements ClientModInitializer {
         // Registrazione del KeyMapping personalizzabile (Tasto F predefinito con costante InputConstants)
         swapKeyMapping = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.hotbarswap.swap_key",
-                InputConstants.Type.KEYBOARD,
+                InputConstants.Type.KEYSYM,
                 InputConstants.KEY_F,
                 KeyMapping.Category.INVENTORY
         ));
