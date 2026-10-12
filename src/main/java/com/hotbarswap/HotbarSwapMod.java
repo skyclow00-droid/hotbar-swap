@@ -18,7 +18,7 @@ public class HotbarSwapMod implements ModInitializer {
         LOGGER.info("Inizializzazione di Hotbar Swap (Minecraft 26.3)...");
 
         // Registrazione del Custom Payload per la comunicazione C2S
-        PayloadTypeRegistry.serverboundPlay().register(SwapHotbarPayload.TYPE, SwapHotbarPayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(SwapHotbarPayload.TYPE, SwapHotbarPayload.CODEC);
 
         // Ricezione del pacchetto autoritativo sul server
         ServerPlayNetworking.registerGlobalReceiver(SwapHotbarPayload.TYPE, (payload, context) -> {
@@ -29,7 +29,7 @@ public class HotbarSwapMod implements ModInitializer {
 
         // Pulizia dei dati del giocatore alla disconnessione
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
-            HotbarSwapManager.clearPlayerData(handler.getPlayer().getUUID());
+            HotbarSwapManager.clearPlayerData(handler.player.getUUID());
         });
 
         LOGGER.info("Hotbar Swap inizializzato con successo!");
