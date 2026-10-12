@@ -1,23 +1,13 @@
 package com.hotbarswap.network;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 /**
- * Payload inviato dal Client al Server per richiedere lo scambio della colonna hotbar selezionata.
+ * Identificatore del pacchetto C2S (API di rete legacy, Minecraft < 1.20.5).
  */
-public record SwapHotbarPayload(int hotbarSlot) implements CustomPacketPayload {
-    public static final Type<SwapHotbarPayload> TYPE = new Type<>(Identifier.fromNamespaceAndPath("hotbarswap", "swap_hotbar"));
-    public static final StreamCodec<ByteBuf, SwapHotbarPayload> CODEC = ByteBufCodecs.VAR_INT.map(
-            SwapHotbarPayload::new,
-            SwapHotbarPayload::hotbarSlot
-    );
+public final class SwapHotbarPayload {
+    public static final ResourceLocation ID = new ResourceLocation("hotbarswap", "swap_hotbar");
 
-    @Override
-    public Type<? extends CustomPacketPayload> type() {
-        return TYPE;
+    private SwapHotbarPayload() {
     }
 }
